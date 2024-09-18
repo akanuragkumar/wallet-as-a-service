@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 
 from base.middleware.custom_manager import TenantAwareManager
 from base.models import BaseModel
@@ -14,6 +15,11 @@ class Customer(BaseModel):
 
     # Use the tenant-aware manager
     objects = TenantAwareManager()
+
+    def calculated_balance(self):
+        credit_sum = self.ledger_entries.filter(transaction_type='credit').aggregate(Sum('amount'))['amount__sum'] or 0
+        debit_sum = self.ledger_entries.filter(transaction_type='debit').aggregate(Sum('amount'))['amount__sum'] or 0
+        return credit_sum - debit_sum
 
     def __str__(self):
         return f'{self.name} ({self.uuid})'
