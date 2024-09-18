@@ -36,6 +36,7 @@ THIRD_PARTY_APPS = [
     'django_fsm_log',
     'django_filters',
     'django_fsm',
+    'drf_yasg',
 ]
 WAAS_APPS = [
     'tenant',
@@ -97,6 +98,7 @@ TEMPLATES = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 2,
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
