@@ -14,10 +14,29 @@ Wallet-as-a-Service is a Django-based project that provides a scalable and secur
 ------------
 
 *   **Multi-tenancy**: Support for multiple tenants, allowing businesses to manage their own wallets and customers.
+*   **Shared Database & Shared Tables**: All tenants share the same tables, simplifying database management.
+*   **Tenant-Aware Queries**: Middleware dynamically identifies the tenant and filters queries by `tenant_id` to ensure data isolation.
+*   **Single Database, Single Schema**: No need for separate schemas for each tenant.
+*   **Scalability**: This architecture scales well for tenants that don't require significant isolation.
+*   **Simplified Migrations**: Apply migrations once, and they will be applied to all tenants sharing the same tables.
 *   **Customer Management**: Manage customer information, including profiles, wallets, and transaction history.
 *   **Wallet Management**: Create, manage, and update digital wallets, including balance management and transaction processing.
 *   **Transaction Management**: Process transactions, including payments, transfers, and withdrawals.
 *   **Security**: Implement robust security measures, including encryption, authentication, and authorization.
+
+**How it Works**
+----------------
+
+1. Each table in the database has a `tenant_id` column.
+2. When a tenant makes a request, the middleware identifies the tenant and appends a filter to the query to only retrieve data for that tenant.
+3. The database returns only the data for the requesting tenant, ensuring data isolation.
+
+**Benefits**
+------------
+
+* Simplified database management
+* Scalable architecture
+* Easy migration management
 
 ## Technical Requirements
 -------------------------
