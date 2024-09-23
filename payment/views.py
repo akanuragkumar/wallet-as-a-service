@@ -15,7 +15,7 @@ class PaymentTransactionView(APIView):
     @transaction.atomic
     def post(self, request):
         data = request.data
-        customer_id = data.get('customer_id')
+        customer_uuid = data.get('customer_uuid')
         transaction_type = data.get('transaction_type')  # credit or debit
         amount = data.get('amount')
         payment_gateway_reference = data.get('payment_gateway_reference', None)
@@ -24,7 +24,7 @@ class PaymentTransactionView(APIView):
 
         try:
             # Fetch the customer
-            customer = Customer.objects.get(id=customer_id)
+            customer = Customer.objects.get(uuid=customer_uuid)
 
             # Credit transaction (Adding money)
             if transaction_type == 'credit':
