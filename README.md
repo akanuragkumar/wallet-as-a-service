@@ -1,9 +1,7 @@
-
-
-Here is a sample README for the Wallet-as-a-Service project:
-
 # Wallet-as-a-Service
 ======================
+
+## [API Documentation](https://akanuragkumar.github.io/wallet-as-a-service/)
 
 ## Overview
 ------------
