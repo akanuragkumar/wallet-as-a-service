@@ -1,4 +1,6 @@
-TRANSACTION_TYPES = (
-        ('credit', 'Credit'),
-        ('debit', 'Debit'),
-    )
+from djchoices import DjangoChoices, ChoiceItem
+
+
+class TransactionTypesChoices(DjangoChoices):
+    CREDIT = ChoiceItem('credit')
+    DEBIT = ChoiceItem('debit')

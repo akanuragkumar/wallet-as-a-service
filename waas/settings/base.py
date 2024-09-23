@@ -43,6 +43,7 @@ WAAS_APPS = [
     'customer',
     'base',
     'ledger',
+    'payment',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + WAAS_APPS

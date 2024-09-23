@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import TenantView
+
+from tenant.views import TenantView
 
 urlpatterns = [
     # Onboard a new tenant (POST)

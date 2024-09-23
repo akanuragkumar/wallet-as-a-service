@@ -1,12 +1,15 @@
 from django.db import models
 from base.models import BaseModel
 from customer.models import Customer
-from ledger.choices import TRANSACTION_TYPES
+from ledger.choices import TransactionTypesChoices
 
 
 class Ledger(BaseModel):
     customer = models.ForeignKey(Customer, related_name='ledger_entries', on_delete=models.CASCADE)
-    transaction_type = models.CharField(max_length=10, choices=(('credit', 'Credit'), ('debit', 'Debit')))
+    payment = models.ForeignKey('payment.Payment',
+                                on_delete=models.CASCADE, null=True, blank=True)  # Link to payment
+    transaction_type = models.CharField(max_length=10, choices=TransactionTypesChoices,
+                                        default=TransactionTypesChoices.DEBIT)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     current_balance = models.DecimalField(max_digits=10,
                                           decimal_places=2)  # Store customer's balance at the time of this transaction
