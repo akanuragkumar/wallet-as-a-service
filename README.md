@@ -57,4 +57,4 @@ Wallet-as-a-Service is a Django-based project that provides a scalable and secur
 ## API Documentation
 -------------------
 
-API documentation is available at `/api/docs/`.
+API documentation is available at `https://akanuragkumar.github.io/wallet-as-a-service/`.
