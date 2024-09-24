@@ -24,9 +24,7 @@ Wallet-as-a-Service is a Django-based project that provides a scalable and secur
 
 **How it Works**
 ----------------
-
-1. Each table in the database has a `tenant_id` column.
-2. When a tenant makes a request, the middleware identifies the tenant and appends a filter to the query to only retrieve data for that tenant.
+1. When a tenant makes a request, the middleware identifies the tenant and appends a filter to the query to only retrieve data for that tenant.
 3. The database returns only the data for the requesting tenant, ensuring data isolation.
 
 **Benefits**
